@@ -1,6 +1,5 @@
 Shader "Custom/S01"
 {
-//测试行
     Properties{
         _MainTex("Maintex",2D) = "White"{}
         _Roughness("Roughness",2D) = "White"{}
@@ -56,7 +55,7 @@ Shader "Custom/S01"
             half _NormalScale;
             half _Gloss;
             half _refScale;
-
+//test
             v2f vert(a2v v)
             {
                 v2f o;

@@ -12,6 +12,7 @@
 
         Pass
         {
+            colormask 0
             zwrite on
             ZTest Always
             stencil{

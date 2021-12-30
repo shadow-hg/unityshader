@@ -8,7 +8,7 @@
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
-        colormask 0
+        //colormask 0
         cull off
         //ZWrite off
         stencil{

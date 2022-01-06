@@ -18,6 +18,10 @@ public class InstanceEffect : MonoBehaviour
     [Header("每行数量：")] public Vector3 nn = new Vector3(1,1,1);
 
     private int _mm = 0;
+    
+    public float MenuPosX = 120.0f;
+    public float MenuPosY = 120.0f;
+    private bool MenuShow = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,25 @@ public class InstanceEffect : MonoBehaviour
             _mm = 0;
             GenerateEff(effectCount, interval);
             reset = false;
+        }
+    }
+
+    private void OnGUI()
+    {
+        var rectBtnReset = new Rect(MenuPosX+224,MenuPosY+82,76,36);//输入框
+        if (GUI.Button(rectBtnReset, "召唤菜单"))
+        {
+            var instanceEff = this.transform.GetComponent<EffectTestUI>();
+            if (MenuShow == true)
+            {
+                instanceEff.enabled = false;
+                MenuShow = false;
+            }
+            else
+            {
+                instanceEff.enabled = true;
+                MenuShow = true;
+            }
         }
     }
 

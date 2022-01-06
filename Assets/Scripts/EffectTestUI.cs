@@ -7,7 +7,7 @@ using Yoozoo.Core.Common;
 
 public class EffectTestUI : MonoBehaviour
 {
-    public List<GameObject> effectsPrefabs;
+    //public List<GameObject> effectsPrefabs;
 
     [Header("生成物体的总数：")] public int effectCount = 1; //生成的数量
 
@@ -15,6 +15,11 @@ public class EffectTestUI : MonoBehaviour
     [Header("开始生成的原点：")] public Vector3 initialPos = new Vector3(1, 1, 1); //生成特效的原点
 
     [Header("每行数量：")] public Vector3 nn = new Vector3(1,1,1);
+
+    public float MenuPosX = 24;
+    public float MenuPosY = 24;
+
+    public float inputWidth = 0.1f;//屏幕尺寸百分比
     // Start is called before the first frame update
     void Start()
     {
@@ -67,49 +72,51 @@ public class EffectTestUI : MonoBehaviour
         
         
         //数量
-        GUI.Label(new Rect(24,50,48,24),"总数：");
-        var rectInput = new Rect(72, 50, 50, 24);//输入框
+        GUI.Label(new Rect(MenuPosX+24,MenuPosY+50,Screen.width*0.2f,24),"总数：");
+        var rectInput = new Rect(MenuPosX+72, MenuPosY+50, 50, 24);//输入框
         string reeffectCount = GUI.TextField(rectInput, effectCount.ToString());
         effectCount = reeffectCount.ToInt();
 
         
         //每行的数量x
-        GUI.Label(new Rect(24,82,88,24),"每行数量xyz：");
+        GUI.Label(new Rect(MenuPosX+24,MenuPosY+82,88,24),"每行数量xyz：");
         
-        var rectCountx = new Rect(126, 82, 24, 24);//输入框
+        var rectCountx = new Rect(MenuPosX+126, MenuPosY+82, 24, 24);//输入框
         string nnx = GUI.TextField(rectCountx, nn.x.ToString());
         nn.x = nnx.ToInt();
         //每行的数量y
-        var rectCounty = new Rect(156, 82, 24, 24);//输入框
+        var rectCounty = new Rect(MenuPosX+156, MenuPosY+82, 24, 24);//输入框
         string nny = GUI.TextField(rectCounty, nn.y.ToString());
         nn.y = nny.ToInt();
         //每行的数量z
-        var rectCountz = new Rect(186, 82, 24, 24);//输入框
+        var rectCountz = new Rect(MenuPosX+186, MenuPosY+82, 24, 24);//输入框
         string nnz = GUI.TextField(rectCountz, nn.z.ToString());
         nn.z = nnz.ToInt();
         
         
         //每个物体每个方向的间隔
-        GUI.Label(new Rect(24,114,100,24),"每方向间隔xyz：");
+        GUI.Label(new Rect(MenuPosX+24,MenuPosY+114,100,24),"每方向间隔xyz：");
         
-        var rectJGx = new Rect(126, 114, 24, 24);//输入框
+        var rectJGx = new Rect(MenuPosX+126, MenuPosY+114, 24, 24);//输入框
         string intervalx = GUI.TextField(rectJGx, interval.x.ToString());
-        nn.x = nnx.ToInt();
+        interval.x = intervalx.ToInt();
         //每行的数量y
-        var rectJGy = new Rect(156, 114, 24, 24);//输入框
+        var rectJGy = new Rect(MenuPosX+156, MenuPosY+114, 24, 24);//输入框
         string intervaly = GUI.TextField(rectJGy, interval.y.ToString());
-        nn.y = nny.ToInt();
+        interval.y = intervaly.ToInt();
         //每行的数量z
-        var rectJGz = new Rect(186, 114, 24, 24);//输入框
+        var rectJGz = new Rect(MenuPosX+186, MenuPosY+114, 24, 24);//输入框
         string intervalz = GUI.TextField(rectJGz, interval.z.ToString());
-        nn.z = nnz.ToInt();
+        interval.z = intervalz.ToInt();
 
-        var rectBtnReset = new Rect(200,126,66,66);//输入框
+        var rectBtnReset = new Rect(MenuPosX+224,MenuPosY+82,46,46);//输入框
         if (GUI.Button(rectBtnReset, "Reset"))
         {
-            var test = FindObjectOfType<EffectTest>();
-            test.effectCount = count;
-            test.GenerateEffects(count);
+            var instanceEff = this.transform.GetComponent<InstanceEffect>();
+            instanceEff.effectCount = effectCount;
+            instanceEff.interval = interval;
+            instanceEff.nn = nn;
+            instanceEff.reset = true;
         }
         
     }

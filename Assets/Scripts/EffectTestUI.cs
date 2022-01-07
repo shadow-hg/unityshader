@@ -13,13 +13,16 @@ public class EffectTestUI : MonoBehaviour
 
     [Header("每个物体的间隔：")] public Vector3 interval = new Vector3(1, 1, 1); //每个特效的间隔
     [Header("开始生成的原点：")] public Vector3 initialPos = new Vector3(1, 1, 1); //生成特效的原点
+    [Header("屏幕射线位置：")] public Vector2 ScreenRayPos = new Vector2(0.1f, 0.1f); //生成特效的原点
 
     [Header("每行数量：")] public Vector3 nn = new Vector3(1,1,1);
 
     public float MenuPosX = 24;
     public float MenuPosY = 24;
 
+    
     public float inputWidth = 0.1f;//屏幕尺寸百分比
+    public float inputHeigh = 0.1f;//屏幕尺寸百分比
     // Start is called before the first frame update
     void Start()
     {
@@ -67,9 +70,8 @@ public class EffectTestUI : MonoBehaviour
 
     void OnGUI()
     {
-        float x = 0.2f;
-        float y = 0.2f;
-        
+        //在屏幕上标出射线开始发射的点
+        GUI.Button(new Rect(ScreenRayPos.x * Screen.width, ScreenRayPos.y * Screen.height,5,5), "");
         
         //数量
         GUI.Label(new Rect(MenuPosX+24,MenuPosY+50,Screen.width*0.2f,24),"总数：");
@@ -105,9 +107,19 @@ public class EffectTestUI : MonoBehaviour
         string intervaly = GUI.TextField(rectJGy, interval.y.ToString());
         interval.y = intervaly.ToInt();
         //每行的数量z
-        var rectJGz = new Rect(MenuPosX+186, MenuPosY+114, 24, 24);//输入框
+        var rectJGz = new Rect(MenuPosX+186,MenuPosY+114, 24, 24);//输入框
         string intervalz = GUI.TextField(rectJGz, interval.z.ToString());
         interval.z = intervalz.ToInt();
+        
+        //射线的屏幕空间位置
+        GUI.Label(new Rect(MenuPosX+24,MenuPosY+146,100,24),"屏幕位置xy：");
+        var rectRayx = new Rect(MenuPosX+126, MenuPosY+146, 32, 32);
+        string ScreenRayPosx = GUI.TextField(rectRayx, ScreenRayPos.x.ToString());
+        ScreenRayPos.x = ScreenRayPosx.ToFloat();
+        
+        var rectRayy = new Rect(MenuPosX+166, MenuPosY+146, 32, 32);
+        string ScreenRayPosy = GUI.TextField(rectRayy, ScreenRayPos.y.ToString());
+        ScreenRayPos.y = ScreenRayPosy.ToFloat();
 
         var rectBtnReset = new Rect(MenuPosX+224,MenuPosY+82,46,46);//输入框
         if (GUI.Button(rectBtnReset, "Reset"))

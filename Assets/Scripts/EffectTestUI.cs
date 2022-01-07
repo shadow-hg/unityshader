@@ -129,6 +129,7 @@ public class EffectTestUI : MonoBehaviour
             instanceEff.interval = interval;
             instanceEff.nn = nn;
             instanceEff.reset = true;
+            interval.x = instanceEff.interval.x;
         }
         
     }

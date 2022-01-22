@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using BehaviorDesigner.Runtime.Tasks;
-using Tayx.Graphy.Utils.NumString;
-using UnityEngine;
-using UnityEngine.UI;
-using Yoozoo.Core.Common;
+﻿using UnityEngine;
 [ExecuteInEditMode]
 
 public class EffectTestUI : MonoBehaviour
@@ -44,14 +37,14 @@ public class EffectTestUI : MonoBehaviour
     {
         if (! this.GetComponent<InstanceEffect>())
         {
-            InstanceEffect ds = this.AddComponent(typeof(InstanceEffect)) as InstanceEffect;
+            InstanceEffect ds = gameObject.AddComponent(typeof(InstanceEffect)) as InstanceEffect;
+            
         }
     }
 
     private void Start()
     {
-        newInsEff = this.transform.GetComponent<InstanceEffect>();
-        
+        newInsEff = gameObject.GetComponent<InstanceEffect>();
     }
 
     private void Update()
@@ -76,49 +69,55 @@ public class EffectTestUI : MonoBehaviour
         GUI.Label(new Rect(MenuPosX+24,MenuPosY+50,Screen.width*0.2f,24),"总数：");
         var rectInput = new Rect(MenuPosX+72, MenuPosY+50, 50, 24);//输入框
         string reeffectCount = GUI.TextField(rectInput, effectCount.ToString());
-        effectCount = reeffectCount.ToInt();
+        int.TryParse(reeffectCount, out effectCount);
 
-        
         //每行的数量x
         GUI.Label(new Rect(MenuPosX+24,MenuPosY+82,88,24),"每行数量xyz：");
         
         var rectCountx = new Rect(MenuPosX+126, MenuPosY+82, 24, 24);//输入框
         string nnx = GUI.TextField(rectCountx, nn.x.ToString());
-        nn.x = nnx.ToInt();
+        int.TryParse(nnx,out int nnxx);
+        nn.x = nnxx;
         //每行的数量y
         var rectCounty = new Rect(MenuPosX+156, MenuPosY+82, 24, 24);//输入框
         string nny = GUI.TextField(rectCounty, nn.y.ToString());
-        nn.y = nny.ToInt();
+        int.TryParse(nny, out int nnyy);
+        nn.y = nnyy;
         //每行的数量z
         var rectCountz = new Rect(MenuPosX+186, MenuPosY+82, 24, 24);//输入框
         string nnz = GUI.TextField(rectCountz, nn.z.ToString());
-        nn.z = nnz.ToInt();
-        
-        
+        int.TryParse(nnz, out int nnzz);
+        nn.z = nnzz;
+
         //每个物体每个方向的间隔
         GUI.Label(new Rect(MenuPosX+24,MenuPosY+114,100,24),"每方向间隔xyz：");
-        
+
         var rectJGx = new Rect(MenuPosX+126, MenuPosY+114, 24, 24);//输入框
         string intervalx = GUI.TextField(rectJGx, interval.x.ToString());
-        interval.x = intervalx.ToInt();
+        int.TryParse(intervalx, out int intervalxx);
+        interval.x = intervalxx;
         //每行的数量y
         var rectJGy = new Rect(MenuPosX+156, MenuPosY+114, 24, 24);//输入框
         string intervaly = GUI.TextField(rectJGy, interval.y.ToString());
-        interval.y = intervaly.ToInt();
+        int.TryParse(intervaly, out int intervalyy);
+        interval.y = intervalyy;
         //每行的数量z
         var rectJGz = new Rect(MenuPosX+186,MenuPosY+114, 24, 24);//输入框
         string intervalz = GUI.TextField(rectJGz, interval.z.ToString());
-        interval.z = intervalz.ToInt();
-        
+        int.TryParse(intervalz, out int intervalzz);
+        interval.z = intervalzz;
+
         //射线的屏幕空间位置
         GUI.Label(new Rect(MenuPosX+24,MenuPosY+146,100,24),"屏幕位置xy：");
         var rectRayx = new Rect(MenuPosX+126, MenuPosY+146, 32, 32);
         string ScreenRayPosx = GUI.TextField(rectRayx, ScreenRayPos.x.ToString());
-        ScreenRayPos.x = ScreenRayPosx.ToFloat();
+        float.TryParse(ScreenRayPosx, out float ScreenRayPosxx);
+        ScreenRayPos.x = ScreenRayPosxx;
         
         var rectRayy = new Rect(MenuPosX+166, MenuPosY+146, 32, 32);
         string ScreenRayPosy = GUI.TextField(rectRayy, ScreenRayPos.y.ToString());
-        ScreenRayPos.y = ScreenRayPosy.ToFloat();
+        float.TryParse(ScreenRayPosy, out float ScreenRayPosyy);
+        ScreenRayPos.y = ScreenRayPosyy;
 
         var rectBtnReset = new Rect(MenuPosX+224,MenuPosY+82,46,46);//输入框
         if (GUI.Button(rectBtnReset, "Reset"))
@@ -131,16 +130,14 @@ public class EffectTestUI : MonoBehaviour
             {
                 newInsEff.reset = true;
             }
-            
         }
-        
-        
-        
+
         //选择品质
         GUI.Label(new Rect(MenuPosX+290,MenuPosY+50,Screen.width*0.2f,24),"选择类型(0-5/低端-高端):");
         var rectQualityInput = new Rect(MenuPosX+450, MenuPosY+50, 32, 24);//输入框
         string rectQuality = GUI.TextField(rectQualityInput, EffQuality.ToString());
-        EffQuality = rectQuality.ToInt();
+        int.TryParse(rectQuality, out int rectQualityy);
+        EffQuality = rectQualityy;
         //循环
         GUI.Label(new Rect(MenuPosX+290,MenuPosY+82,Screen.width*0.2f,24),"开关循环：");
         var rectLoopInput = new Rect(MenuPosX+350, MenuPosY+82, 32, 24);//输入框
@@ -150,16 +147,19 @@ public class EffectTestUI : MonoBehaviour
         GUI.Label(new Rect(MenuPosX+370,MenuPosY+82,Screen.width*0.2f,24),"循环间隔s：");
         var rectLoopNumInput = new Rect(MenuPosX+440, MenuPosY+82, 32, 24);//输入框
         string rectLoopNum = GUI.TextField(rectLoopNumInput, loopNum.ToString());
-        loopNum = rectLoopNum.ToInt();
+        int.TryParse(rectLoopNum, out int rectLoopNumm);
+        loopNum = rectLoopNumm;
         //整体缩放
         GUI.Label(new Rect(MenuPosX+290,MenuPosY+114,Screen.width*0.2f,24),"整体缩放：");
         var rectScaleInput = new Rect(MenuPosX+350, MenuPosY+114, 32, 24);//输入框
         string rectScale = GUI.TextField(rectScaleInput, effScale.ToString());
-        effScale = rectScale.ToFloat();
+        float.TryParse( rectScale, out float rectScalee);
+        effScale = rectScalee;
         //自动调整数量的轴向
         GUI.Label(new Rect(MenuPosX+290,MenuPosY+146,Screen.width*0.2f,24),"自动调整数量的轴(0-1/x-z)：");
         var rectAxisInput = new Rect(MenuPosX+460, MenuPosY+146, 32, 24);//输入框
         string rectAxis = GUI.TextField(rectAxisInput, effAxis.ToString());
-        effAxis = rectAxis.ToInt();
+        int.TryParse(rectAxis, out int rectAxiss);
+        effAxis = rectAxiss;
     }
 }

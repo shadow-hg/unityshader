@@ -1,0 +1,4 @@
+repository "UnityShaderURP@UnityShader@cloud"
+  path "/"
+    br "/main"
+    co "/main"

@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using Gameplay.PVE.Skill;
+using RuntimeInspectorNamespace;
+using UnityEditor;
 using UnityEngine;
 
 /* 通用CustomShaderGUI:
@@ -31,12 +33,13 @@ public class ShaderGUIDefault : ShaderGUI
     public Material targetMat;
 
     private bool useMaskBool = false;
-    bool maskBool = false;
-    bool animBool = false;
-    bool steniBool = false;
-    bool blendBool = false;
-
-    public bool showHelp = false;
+    private bool maskBool = false;
+    private bool animBool = false;
+    private bool steniBool = false;
+    private bool blendBool = false;
+    private bool maskAdditiveBool = false;
+    public bool showHelpBool = false;
+    
 
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
@@ -62,6 +65,19 @@ public class ShaderGUIDefault : ShaderGUI
             materialEditor.ShaderProperty(color, "Color：");
         }
 
+        if (useMaskBool)
+        {
+            if (maskAdditiveBool)
+            {
+                if (targetMat.HasProperty("_MaskColor"))
+                {
+                    EditorGUILayout.LabelField("注：使用Mask颜色叠加时，两个贴图颜色只能通过R通道和Color参数控制。");
+                    MaterialProperty maskColor = FindProperty("_MaskColor", properties);
+                    materialEditor.ShaderProperty(maskColor, "Mask颜色：");
+                }
+            }
+        }
+
         if (targetMat.HasProperty("_ColorStrength"))
         {
             MaterialProperty colorStr = FindProperty("_ColorStrength", properties);
@@ -78,6 +94,23 @@ public class ShaderGUIDefault : ShaderGUI
         {
             MaterialProperty depthOffset = FindProperty("_DepthOffset", properties);
             materialEditor.ShaderProperty(depthOffset, "深度偏移：");
+        }
+
+        if (useMaskBool)
+        {
+            if (targetMat.HasProperty("_MaskAdditive"))
+            {
+                MaterialProperty maskAdditive = FindProperty("_MaskAdditive", properties);
+                materialEditor.ShaderProperty(maskAdditive, "Mask颜色叠加：");
+                if (maskAdditive.floatValue == 1)
+                {
+                    maskAdditiveBool = true;
+                }
+                else
+                {
+                    maskAdditiveBool = false;
+                }
+            }
         }
     }
 
@@ -141,7 +174,7 @@ public class ShaderGUIDefault : ShaderGUI
 
                     materialEditor.ShaderProperty(MainSpeedU, "主图X轴位移：");
                     MaterialProperty MainSpeedV = FindProperty("_MainSpeedV", properties);
-                    materialEditor.ShaderProperty(MainSpeedV, "主图X轴位移：");
+                    materialEditor.ShaderProperty(MainSpeedV, "主图Y轴位移：");
                 }
             }
 
@@ -157,7 +190,7 @@ public class ShaderGUIDefault : ShaderGUI
 
                         materialEditor.ShaderProperty(MaskSpeedU, "Mask图X轴位移：");
                         MaterialProperty MaskSpeedV = FindProperty("_MaskSpeedV", properties);
-                        materialEditor.ShaderProperty(MaskSpeedV, "Mask图X轴位移：");
+                        materialEditor.ShaderProperty(MaskSpeedV, "Mask图Y轴位移：");
                     }
                 }
             }
@@ -231,13 +264,15 @@ public class ShaderGUIDefault : ShaderGUI
     void ShowHelp()
     {
         EditorGUILayout.LabelField("---------------------------------------------------------------------------------------------------------------------");
-        showHelp = EditorGUILayout.BeginFoldoutHeaderGroup(showHelp, "查看帮助");
-        if (showHelp)
+        showHelpBool = EditorGUILayout.BeginFoldoutHeaderGroup(showHelpBool, "查看帮助？");
+        if (showHelpBool)
         {
             EditorGUILayout.LabelField("一些特殊参数的作用：");
             EditorGUILayout.LabelField("曝光：默认值为1；0-1时暗部越亮；大于1时亮的地方越亮，暗的越暗.");
             EditorGUILayout.LabelField("深度偏移：默认值为0；小于0时显示在物体前面；大于1时会被物体遮挡；可用于特效与地面的接缝.");
             EditorGUILayout.LabelField("选择剔除：默认值为Back（剔除模型背面不渲染）；当特效或模型的内面永远不会被摄像机拍到时选择Back.");
+            EditorGUILayout.LabelField("Mask贴图：开启Mask贴图后，除了可以使用Main贴图的a通道控制透明度，还可以使用mask贴图的 R 通道控制透明度");
+            EditorGUILayout.LabelField("Mask颜色叠加：开启后Main贴图的R通道配合Color参数控制第一层颜色，Mask贴图的R通道配合Mask参数控制第二层颜色");
             if (targetMat.HasProperty("_Stencil"))
             {
                 EditorGUILayout.LabelField("模板测试：默认值为0,Always,Keep可用于UI的裁剪.");

@@ -1,4 +1,4 @@
-﻿Shader "HRP/GGame/UI/UIDefault"
+﻿Shader "HRP/GGame/FX/FXTransparent"
 {
     Properties
     {
@@ -27,12 +27,6 @@
         _SrcAlpha("SrcAlpha",float) = 5 //5,4,2,1 /5-10,4-1,2-0,1-1,6-1
         _DstAlpha("DstAlpha",float) = 10 //10,1,0,6
 
-        _Stencil("Stencil ID", Float) = 0
-        [Enum(UnityEngine.Rendering.CompareFunction)]_StencilComp("Stencil Comparison", int) = 8
-        [Enum(UnityEngine.Rendering.StencilOp)]_StencilOp("Stencil Operation", int) = 0
-        //_StencilWriteMask("Stencil Write Mask", Float) = 255
-        //_StencilReadMask("Stencil Read Mask", Float) = 255
-
         [Enum(UnityEngine.Rendering.CullMode)]_Cull("Cull",int) = 2
 
         //[Enum(UnityEngine.Rendering.CompareFunction)]_ZTest("ZTest", Float) = 4
@@ -47,14 +41,7 @@
             "Queue" = "Transparent"
             "RenderType" = "Transparent"
         }
-        Stencil
-        {
-            Ref[_Stencil]
-            Comp[_StencilComp]
-            Pass[_StencilOp]
-            //ReadMask[_StencilReadMask]
-            //WriteMask[_StencilWriteMask]
-        }
+        
         Pass
         {
 
@@ -100,7 +87,7 @@
             struct VertexOutput
             {
                 float4 pos : SV_POSITION;
-
+                
                 VERTEX_INPUT_PACK_UV(0)
 
                 #if defined(_USEMASK_ON)
@@ -125,7 +112,7 @@
                 #endif
 
                 o.pos = vertDepthOffset(o.pos, _DepthOffset);
-
+                
                 o.movingUV.xy = v.texcoord0.xy;
                 #if defined (_MAINANIMATION_ON)
                 o.movingUV.xy = half2(_MainSpeedU, _MainSpeedV) * _Time.g + v.texcoord0.xy;
@@ -187,7 +174,7 @@
                 #else//如果完全不使用Mask贴图，那就用MainTex和Color的a通道去控制Alpha
                 half finalAlpha = _MainTexVar.a * i.color.a;
                 #endif
-                
+
                 return half4(finalColor, finalAlpha);
             }
             ENDHLSL

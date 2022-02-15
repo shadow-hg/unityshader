@@ -40,8 +40,6 @@
             #include "GTA_H_FX_Common.hlsl"
 
             CBUFFER_START(UnityPerMaterial)
-            half _ColorStrength;
-            half _Pow;
             half _TimeModY;
             half _TimeCycle;
             half _TimeOffset;

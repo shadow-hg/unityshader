@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Car_Base
+  m_Shader: {fileID: 4800000, guid: 95b8de749cfe15b49a4f788bfa856308, type: 3}
+  m_ShaderKeywords: _R_CHANNEL_FOR_AO
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseColorTex:
+        m_Texture: {fileID: 2800000, guid: 533613c183063a44faccbdb7462365d3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EnvMapLDR:
+        m_Texture: {fileID: 8900000, guid: 3677743226aabd44cab35528074fef47, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LogoTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 9ff1fd1cf4ce80e4eb22d1abc01464ee, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RMAETex:
+        m_Texture: {fileID: 2800000, guid: 4f80c903e2010c44dbd04b41e0e96898, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AmbientLightIntensity: 1
+    - _AmbientOcclusion: 1
+    - _BlendDstFactor: 0
+    - _BlendSrcFactor: 1
+    - _Cutoff: 0.5
+    - _Darkness: 0
+    - _EnvLuminace: 4
+    - _IndirectLightIntensity: 1
+    - _MainLightIntensity: 1
+    - _MaskAmount: 0
+    - _Metallic: 1
+    - _R_CHANNEL: 0
+    - _Roughness: 1
+    - _Specular: 1.25
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlobalShadowCol: {r: 1, g: 1, b: 1, a: 1}
+    - _LogoArea: {r: -2, g: -2, b: -1, a: -1}
+    - _LogoColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainLightCol: {r: 1, g: 1, b: 1, a: 1}
+    - _MainLightPos: {r: 1.71, g: -2.02, b: 0.54, a: 0}
+    - _MaskColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SecondColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SecondLightCol: {r: 1, g: 1, b: 1, a: 1}
+    - _SecondLightPos: {r: 2.47, g: -1.38, b: -1.12, a: 0}
+    - _SpeColor: {r: 1, g: 1, b: 1, a: 1}

@@ -45,13 +45,13 @@ public class ShaderGUIDefault : ShaderGUI
     private GUIStyle TittleStyle;
     private GUIStyle LabStyle;
     
-
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
         this.materialEditor = materialEditor;
         this.properties = properties;
         targetMat = materialEditor.target as Material;
         GUIStyles();//控制全局各个模块的样式
+        RenderType();
         ShowTex();
         ShowMask();
         ShowColorSetting();
@@ -63,6 +63,7 @@ public class ShaderGUIDefault : ShaderGUI
         ShowAlphaTest();
         materialEditor.RenderQueueField();
         ShowHelp();
+        
     }
     
     void GUIStyles()
@@ -75,6 +76,37 @@ public class ShaderGUIDefault : ShaderGUI
         LabStyle = new GUIStyle();
         LabStyle.fontSize = 10;
         LabStyle.normal.textColor = Color.gray;
+    }
+
+    void RenderType()
+    {
+        if (targetMat.HasProperty("_RenderType"))
+        {
+            MaterialProperty renderType = FindProperty("_RenderType", properties);
+            materialEditor.ShaderProperty(renderType, "渲染类型：");
+
+            switch (renderType.floatValue)
+            {
+                case 0:
+                    targetMat.renderQueue = 2000;
+                    targetMat.SetFloat("_ZTest",4.0f);
+                    targetMat.SetFloat("_ZWrite",4.0f);
+                    break;
+                case 1:
+                    targetMat.renderQueue = 2450;
+                    targetMat.SetFloat("_ZTest",4.0f);
+                    targetMat.SetFloat("_ZWrite",4.0f);
+                    break;
+                case 2:
+                    targetMat.renderQueue = 3000;
+                    targetMat.SetFloat("_ZTest",4.0f);
+                    targetMat.SetFloat("_ZWrite",0.0f);
+                    break;
+                case 3:
+                    //自定义
+                    break;
+            }
+        }
     }
 
     void ShowColorSetting()
@@ -158,9 +190,9 @@ public class ShaderGUIDefault : ShaderGUI
                     {
                         EditorGUILayout.LabelField("开启溶解效果后，请将控制溶解的纹理添加到Mask的G通道,并设置“溶解率”参数",LabStyle);
                         
-                        if (targetMat.HasProperty("_Clip"))
+                        if (targetMat.HasProperty("_Cutoff"))
                         {
-                            MaterialProperty clip = FindProperty("_Clip", properties);
+                            MaterialProperty clip = FindProperty("_Cutoff", properties);
                             materialEditor.ShaderProperty(clip, "溶解率");
                         }
                     }
@@ -354,25 +386,27 @@ public class ShaderGUIDefault : ShaderGUI
 
     void ShowAlphaTest()
     {
-        showAlphaTestBool = EditorGUILayout.BeginFoldoutHeaderGroup(showAlphaTestBool, "AlphaTest");
-
-        if (showAlphaTestBool)
+        if (targetMat.HasProperty("_ZWrite"))
         {
-            EditorGUILayout.LabelField("注意：非特殊情况请勿修改以下两个设置！",LabStyle);
-            EditorGUILayout.LabelField("出现透明物体渲染顺序错误时可以修改，具体请寻找TA。",LabStyle);
+            showAlphaTestBool = EditorGUILayout.BeginFoldoutHeaderGroup(showAlphaTestBool, "AlphaTest");
+            if (showAlphaTestBool)
+            {
+                EditorGUILayout.LabelField("注意：非特殊情况请勿修改以下两个设置！",LabStyle);
+                EditorGUILayout.LabelField("出现透明物体渲染顺序错误时可以修改，具体请寻找TA。",LabStyle);
             
-            if (targetMat.HasProperty("_ZTest"))
-            {
-                MaterialProperty zTest = FindProperty("_ZTest", properties);
-                materialEditor.ShaderProperty(zTest, "深度测试");
-            }
+                if (targetMat.HasProperty("_ZTest"))
+                {
+                    MaterialProperty zTest = FindProperty("_ZTest", properties);
+                    materialEditor.ShaderProperty(zTest, "深度测试");
+                }
         
-            if (targetMat.HasProperty("_ZWrite"))
-            {
-                MaterialProperty zWrite = FindProperty("_ZWrite", properties);
-                materialEditor.ShaderProperty(zWrite, "深度写入");
+                if (targetMat.HasProperty("_ZWrite"))
+                {
+                    MaterialProperty zWrite = FindProperty("_ZWrite", properties);
+                    materialEditor.ShaderProperty(zWrite, "深度写入");
+                }
             }
+            EditorGUILayout.EndFoldoutHeaderGroup();
         }
-        EditorGUILayout.EndFoldoutHeaderGroup();
     }
 }

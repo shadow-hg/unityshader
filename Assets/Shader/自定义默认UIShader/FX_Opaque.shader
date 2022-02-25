@@ -1,9 +1,9 @@
-﻿Shader "HRP/GGame/FX/FXOpaque"
+﻿Shader "HRP/GGame/FX/FX_Opaque"
 {
     Properties
     {
         _MainTex("MainTex", 2D) = "white" {}
-        _Color("Color",Color) = (0.5,0.5,0.5,0.5)
+        _Color("Color",Color) = (1,1,1,1)
         _ColorStrength("ColorStrength",float) = 1.0
         _Pow("Pow",float) = 1.0
         _DepthOffset("DepthOffset",float) = 0.0

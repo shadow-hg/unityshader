@@ -50,27 +50,25 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\EffectTestUI.cs" />
-     <Compile Include="Assets\Scripts\InstanceEffect.cs" />
-     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
-     <Compile Include="Assets\Scripts\ShaderCountWindow.cs" />
-     <Compile Include="Assets\Scripts\ShaderGUIDefault.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-     <Compile Include="Assets\TA\TA_ZhgTest\Scripts\RotationTool.cs" />
+     <Compile Include="Assets\Scripts\shader变体统计工具\ShaderCountWindow.cs" />
+     <Compile Include="Assets\Scripts\模型批量生成性能测试工具\EffectTestUI.cs" />
+     <Compile Include="Assets\Scripts\模型批量生成性能测试工具\InstanceEffect.cs" />
+     <Compile Include="Assets\Scripts\绕轴旋转\RotationTool.cs" />
      <None Include="Assets\Shader\自定义默认UIShader\UIDefault.shader" />
-     <None Include="Assets\Shader\变体\BTShader.shader" />
-     <None Include="Assets\Shader\02_BRDF\BRDF.shader" />
-     <None Include="Assets\Shader\01_PBR\Hair.shader" />
-     <None Include="Assets\Shader\01_PBR\PBRShader01.shader" />
-     <None Include="Assets\Shader\01_PBR\PBRShader.shader" />
-     <None Include="Assets\Shader\Hair\Hair.shader" />
-     <None Include="Assets\Shader\模板测试\steil01.shader" />
-     <None Include="Assets\Shader\模板测试\steil02.shader" />
-     <None Include="Assets\Shader\01_PBR\TwoSideShow.shader" />
-     <None Include="Assets\Shader\01_PBR\URPUnlitShader.shader" />
-     <None Include="Assets\Shader\01_PBR\TransparentShader.shader" />
+     <None Include="Assets\Shader\练习\变体\BTShader.shader" />
+     <None Include="Assets\Shader\练习\02_BRDF\BRDF.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\Hair.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\PBRShader01.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\PBRShader.shader" />
+     <None Include="Assets\Shader\练习\Hair\Hair.shader" />
+     <None Include="Assets\Shader\练习\模板测试\steil01.shader" />
+     <None Include="Assets\Shader\练习\模板测试\steil02.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\TwoSideShow.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\URPUnlitShader.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\TransparentShader.shader" />
      <None Include="Assets\Shader\自定义默认UIShader\FX_Transparent.shader" />
-     <None Include="Assets\Shader\01_PBR\具有方向的溶解shader.shader" />
+     <None Include="Assets\Shader\练习\01_PBR\具有方向的溶解shader.shader" />
      <None Include="Assets\Shader\自定义默认UIShader\FX_Opaque.shader" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>D:/UnityProject/ZhgTest/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>

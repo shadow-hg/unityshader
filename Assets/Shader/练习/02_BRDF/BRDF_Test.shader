@@ -1,6 +1,6 @@
 ﻿// Upgrade NOTE: upgraded instancing buffer 'Props' to new syntax.
 
-Shader "Custom/CookTorranceSurface" {
+Shader "Custom/Test/BRDF01" {
     Properties {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _ColorTint ("Color", Color) = (1,1,1,1)

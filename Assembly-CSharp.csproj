@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\绕轴旋转\RotationTool.cs" />
      <Compile Include="Assets\Scripts\自定义脚本属性面板\Readme.cs" />
      <Compile Include="Assets\Scripts\自定义脚本属性面板\ReadmeEditor.cs" />
+     <None Include="Assets\Shader\练习\02_BRDF\Shader\BRDF02.shader" />
      <None Include="Assets\Shader\练习\变体\BTShader.shader" />
      <None Include="Assets\Shader\练习\02_BRDF\BRDF_Test.shader" />
      <None Include="Assets\Shader\练习\01_PBR\Hair.shader" />
@@ -65,12 +66,13 @@
      <None Include="Assets\Shader\练习\01_PBR\PBRShader.shader" />
      <None Include="Assets\Shader\练习\NewUnlitShader.shader" />
      <None Include="Assets\Shader\练习\Hair\Hair.shader" />
+     <None Include="Assets\RenderFeature\TwoSide.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil01.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil02.shader" />
      <None Include="Assets\Shader\练习\01_PBR\TwoSideShow.shader" />
      <None Include="Assets\Shader\自定义默认UIShader\FX_Default.shader" />
      <None Include="Assets\Shader\练习\01_PBR\URPUnlitShader.shader" />
-     <None Include="Assets\Shader\练习\02_BRDF\Shader\BRDF.shader" />
+     <None Include="Assets\Shader\练习\02_BRDF\Shader\BRDF01.shader" />
      <None Include="Assets\Shader\练习\01_PBR\TransparentShader.shader" />
      <None Include="Assets\Shader\自定义默认UIShader\UI_Default.shader" />
      <None Include="Assets\Shader\练习\01_PBR\具有方向的溶解shader.shader" />

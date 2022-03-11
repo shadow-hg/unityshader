@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Study/BRDF"
+﻿Shader "Unlit/Study/BRDF01"
 {
     Properties
     {

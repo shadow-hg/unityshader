@@ -39,6 +39,46 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &-8754678137526789042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: TouShi
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: TouShi
+    Event: 500
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 256
+      PassNames:
+      - TouShi
+    overrideMaterial: {fileID: 2100000, guid: 650e40c38d58e7041b92396258a6b1b4, type: 2}
+    overrideMaterialPassIndex: 1
+    overrideDepthState: 0
+    depthCompareFunction: 7
+    enableWrite: 0
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 1
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +94,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -8839393998591811552}
   - {fileID: 6403215172117076242}
-  m_RendererFeatureMap: 202037ccfd29548512196efa45cadc58
+  - {fileID: -8754678137526789042}
+  m_RendererFeatureMap: 202037ccfd29548512196efa45cadc584e5cd6419e228186
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}

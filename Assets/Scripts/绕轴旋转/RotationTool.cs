@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Yoozoo.Core.Attributes;
-using Yoozoo.Managers.ResourceManagerV2.Editor;
 public class RotationTool : MonoBehaviour
 {
-    [CustomLabel("需要旋转的物体")]
+    [Header("需要旋转的物体")]
     public GameObject MainMesh;//需要旋转的物体
     
     public enum Axis
@@ -16,10 +14,10 @@ public class RotationTool : MonoBehaviour
         y = 1,
         z = 2
     }
-    [CustomLabel("旋转轴")]
+    [Header("旋转轴")]
     public Axis axis;
 
-    [CustomLabel("旋转速度(负数时反方向旋转)")]
+    [Header("旋转速度(负数时反方向旋转)")]
     public float Speed = 1.0f;
     
     void Start()

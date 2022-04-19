@@ -66,9 +66,11 @@
      <None Include="Assets\Shader\练习\01_PBR\Hair.shader" />
      <None Include="Assets\Shader\练习\01_PBR\PBRShader01.shader" />
      <None Include="Assets\Shader\练习\01_PBR\PBRShader.shader" />
+     <None Include="Assets\Shader\屏幕空间扭曲\OpaqueColor.shader" />
      <None Include="Assets\Shader\练习\NewUnlitShader.shader" />
      <None Include="Assets\Shader\练习\Hair\Hair.shader" />
      <None Include="Assets\RenderFeature\TwoSide.shader" />
+     <None Include="Assets\Shader\屏幕空间深度\DepthTex.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil01.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil02.shader" />
      <None Include="Assets\Shader\练习\01_PBR\TwoSideShow.shader" />

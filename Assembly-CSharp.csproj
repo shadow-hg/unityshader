@@ -51,6 +51,8 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\PostProcess\CustomPost.cs" />
+     <Compile Include="Assets\RenderFeature\CustomRenderFeature\BloomPass.cs" />
+     <Compile Include="Assets\RenderFeature\CustomRenderFeature\RenderFeature_Bloom.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Scripts\shader变体统计工具\ShaderCountWindow.cs" />
      <Compile Include="Assets\Scripts\模型批量生成性能测试工具\EffectTestUI.cs" />
@@ -62,14 +64,15 @@
      <None Include="Assets\Shader\练习\02_BRDF\Shader\BRDF02.shader" />
      <None Include="Assets\Shader\练习\变体\BTShader.shader" />
      <None Include="Assets\Shader\练习\02_BRDF\BRDF_Test.shader" />
-     <None Include="Assets\RenderFeature\DepthTest.shader" />
+     <None Include="Assets\RenderFeature\练习1\DepthTest.shader" />
      <None Include="Assets\Shader\练习\01_PBR\Hair.shader" />
+     <None Include="Assets\RenderFeature\CustomRenderFeature\Bloom.compute" />
      <None Include="Assets\Shader\练习\01_PBR\PBRShader01.shader" />
      <None Include="Assets\Shader\练习\01_PBR\PBRShader.shader" />
      <None Include="Assets\Shader\屏幕空间扭曲\OpaqueColor.shader" />
      <None Include="Assets\Shader\练习\NewUnlitShader.shader" />
      <None Include="Assets\Shader\练习\Hair\Hair.shader" />
-     <None Include="Assets\RenderFeature\TwoSide.shader" />
+     <None Include="Assets\RenderFeature\练习1\TwoSide.shader" />
      <None Include="Assets\Shader\屏幕空间深度\DepthTex.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil01.shader" />
      <None Include="Assets\Shader\练习\模板测试\steil02.shader" />

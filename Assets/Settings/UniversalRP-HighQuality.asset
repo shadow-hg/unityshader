@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 236835e33aeb9f6419a98d117881ca02, type: 2}
   - {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   - {fileID: 11400000, guid: ecda2a035f029ca4c9f068ab6d324379, type: 2}
-  m_DefaultRendererIndex: 0
+  m_DefaultRendererIndex: 1
   m_RequireDepthTexture: 1
   m_RequireOpaqueTexture: 1
   m_OpaqueDownsampling: 1
